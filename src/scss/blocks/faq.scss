@@ -102,8 +102,9 @@ $imgMobileHeight: calc($imgHeight/2);
       background-repeat: no-repeat;
       top: 22.5px;
       right: 5px;
-      width: 10px;
+      width: 11px;
       height: 7px;
+      transition: all 0.35s ease-out;
     }
   }
 
