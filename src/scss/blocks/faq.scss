@@ -1,3 +1,8 @@
+$imgWidth: 472px;
+$imgHeight: 358.13px;
+$imgMobileWidth: calc($imgWidth/2);
+$imgMobileHeight: calc($imgHeight/2);
+
 .faq {
   background: linear-gradient(180deg, $medium-purple 0%, $royal-blue 100%);
   padding: 20px 0;
@@ -6,6 +11,9 @@
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+  @media (max-width: $tablet-bp) {
+    padding-top: calc($imgMobileHeight/2*1.21 + 20px);
+  }
 
   &__container {
     background-color: $white;
@@ -18,11 +26,18 @@
     padding-top: 65px;
     padding-bottom: 83px;
     padding-right: 95px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
+    min-height: 550px;
     position: relative;
+    @media (max-width: $tablet-bp) {
+      padding: 132px 48px 48px;
+      background-image: url("./assets/img/purple-bg-mobile.svg");
+      background-position-x: center;
+      background-position-y: 0;
+    }
+    @media (max-width: $mobile-bp) {
+      padding: 132px 24px 48px;
+    }
   }
 
   &__title {
@@ -31,7 +46,11 @@
     line-height: 40px;
     color: $mirage;
     text-transform: uppercase;
-    margin-bottom: calc(43px - 18px);
+    margin-bottom: 43px;
+    @media (max-width: $tablet-bp) {
+      text-align: center;
+      margin-bottom: 38px;
+    }
   }
 
   &__img-wrapper {
@@ -42,11 +61,25 @@
   &__img {
     position: absolute;
     left: -10%;
+    width: $imgWidth;
+    @media (max-width: $tablet-big-bp) {
+      left: -4%;
+    }
+    @media (max-width: $tablet-bp) {
+      width: $imgMobileWidth;
+      height: $imgMobileHeight;
+      top: calc(-1.21 * ($imgMobileHeight / 2));
+      left: calc(50% - $imgMobileWidth/2);
+    }
   }
 
   &__info-wrapper {
     width: 50%;
     margin-left: 57%;
+    @media (max-width: $tablet-bp) {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 
   &__item {
@@ -56,6 +89,11 @@
     padding-right: 20px;
     width: 100%;
     border-bottom: 1px solid $athens-gray;
+    transition: .5s;
+    &:hover, &:focus {
+      color: $mandarin-pearl;
+      cursor: pointer;
+    }
     &:before {
       position: absolute;
       content: '';
@@ -69,10 +107,23 @@
   }
 
   &__answer {
-    //display: none;
+    display: none;
     margin-top: 11px;
+    font-weight: 400;
     font-size: 12px;
     line-height: 18px;
     color: $jumbo;
+  }
+
+  .active {
+    color: $mirage;
+    font-weight: 700;
+    &:before {
+      transform: rotateX(180deg);
+      transition: all 0.35s ease-out;
+    }
+    & > .faq__answer {
+      display: block;
+    }
   }
 }

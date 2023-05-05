@@ -33,6 +33,10 @@ body {
   line-height: 17px;
   color: $trout;
   min-height: 100vh;
+  @media (max-width: $mobile-bp) {
+    font-size: 13px;
+    line-height: 16px;
+  }
 }
 
 a {
@@ -69,7 +73,5 @@ img {
 
 .container {
   max-width: $container-width;
-  margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin: auto 15px;
 }
